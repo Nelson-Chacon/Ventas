@@ -15,13 +15,15 @@ namespace Win.Rentas
     {
         ProductosBL _productos;//creamos una variable global
 
+
+
         public FormProductos()
         {
             InitializeComponent();
 
             _productos = new ProductosBL();//instaciamos la otra solucion
 
-            listaProductoBindingSource.DataSource =  _productos.ObtenerProducto();//LLamamos la funcion para mostrar los productos
+            listaProductoBindingSource.DataSource = _productos.ObtenerProducto();//LLamamos la funcion para mostrar los productos
         }
 
         private void FormProductos_Load(object sender, EventArgs e)
@@ -45,7 +47,7 @@ namespace Win.Rentas
             if (resultado == true)
             {
                 listaProductoBindingSource.ResetBindings(false);//intruccion que nos permite poder cambiar los valores de las propiedades pero no asignar mas propiedades solo si esta: (True)
-
+                DeshabilitarHabiliarBotones(true);
             }
             else
             {
@@ -58,6 +60,52 @@ namespace Win.Rentas
             _productos.AgregarProducto(); //llamamos la funcion 
 
             listaProductoBindingSource.MoveLast();//mueve el producto nuevo a la ultima posicion
+
+            DeshabilitarHabiliarBotones(false);
+        }
+
+        private void DeshabilitarHabiliarBotones(bool valor)
+        {
+            bindingNavigatorMoveFirstItem.Enabled = valor;
+            bindingNavigatorMoveLastItem.Enabled = valor;
+            bindingNavigatorMovePreviousItem.Enabled = valor;
+            bindingNavigatorMoveNextItem.Enabled = valor;
+            bindingNavigatorPositionItem.Enabled = valor;
+            bindingNavigatorAddNewItem.Enabled = valor;
+            bindingNavigatorDeleteItem.Enabled = valor;
+            toolStripButtonCancelar.Visible = !valor;
+        
+        }
+
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+
+            if (idTextBox.Text != "")
+            {
+                var id = Convert.ToInt32(idTextBox.Text);
+                Eliminar(id);
+            }
+        }
+
+        private void Eliminar(int id)
+        { 
+           
+            var resultado = _productos.EliminarProducto(id);
+
+            if (resultado == true)
+            {
+                listaProductoBindingSource.ResetBindings(false);
+            }
+            else
+            {
+                MessageBox.Show("Ocurrio un error en eliminacion del producto");
+            }
+        }
+
+        private void toolStripButtonCancelar_Click(object sender, EventArgs e)
+        {
+            DeshabilitarHabiliarBotones(true);
+            Eliminar(0);
         }
     }
 }

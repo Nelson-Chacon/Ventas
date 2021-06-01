@@ -65,6 +65,23 @@ namespace BL.Rentas
             ListaProducto.Add(nuevoProducto);// forma de como agregar los produtos
         }
 
+        public bool EliminarProducto(int id)
+        {
+            foreach (var producto in ListaProducto)
+            {
+                if (producto.Id == id)
+                {
+                    ListaProducto.Remove(producto);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+
+
+
         }
     
 

@@ -15,8 +15,7 @@ namespace Win.Rentas
     {
 
         SeguridadBL _seguridad;// creamos una variable globar
-
-
+       
         public Form1Login()
         {
             InitializeComponent();
@@ -37,8 +36,6 @@ namespace Win.Rentas
 
         private void button1_Click(object sender, EventArgs e)//boton aceptar
         {
-
-         
             string usuario;// Variable creada para evaluar el campo usuario
             string contrasena;//Variable creada para evaluar el campo contraseña
 
@@ -46,7 +43,7 @@ namespace Win.Rentas
             contrasena = textBox2.Text;//evaluamos las propiedades texto de la caja de texto 2(contraseña) con la nueva variable creada
 
             var resultado = _seguridad.Autorizar(usuario, contrasena);//llamamos la funcion para evaluar si el usuario tiene acceso
-
+            
             if (resultado == true)
             {
                 this.Close();//de tener acceso el usuario esta instruccion nos permite ingresar el sistema
@@ -56,6 +53,7 @@ namespace Win.Rentas
             {
                 MessageBox.Show("¡Usuario o contraseña incorrecta!");// de no tener acceso mostraremos el siguiente mensaje
             }
+         
 
         }
 
