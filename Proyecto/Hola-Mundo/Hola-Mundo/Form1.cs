@@ -27,9 +27,14 @@ namespace Hola_Mundo
 
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hola Mundo");
+            MessageBox.Show("!Hola Mundo¡");
+
+            MessageBox.Show("\"Para tener éxito tu deseo de alcanzarlo debe ser mayor que tu miedo al fracaso\"");
+
+
         }
     }
 }
