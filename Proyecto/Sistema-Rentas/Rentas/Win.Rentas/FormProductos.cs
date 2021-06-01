@@ -13,14 +13,15 @@ namespace Win.Rentas
 {
     public partial class FormProductos : Form
     {
-        ProductosBL _productos;
+        ProductosBL _productos;//creamos una variable global
+
         public FormProductos()
         {
             InitializeComponent();
 
-            _productos = new ProductosBL();
+            _productos = new ProductosBL();//instaciamos la otra solucion
 
-            listaProductoBindingSource.DataSource =  _productos.ObtenerProducto();
+            listaProductoBindingSource.DataSource =  _productos.ObtenerProducto();//LLamamos la funcion para mostrar los productos
         }
 
         private void FormProductos_Load(object sender, EventArgs e)
@@ -33,30 +34,30 @@ namespace Win.Rentas
 
         }
 
-        private void listaProductoBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        private void listaProductoBindingNavigatorSaveItem_Click(object sender, EventArgs e)//boton para guardar el producto
         {
-            listaProductoBindingSource.EndEdit();
+            listaProductoBindingSource.EndEdit();//instruccion para que el usuario pueda seguir editando la creacion del nuevo producto
 
-            var producto = (Producto)listaProductoBindingSource.Current;
+            var producto = (Producto)listaProductoBindingSource.Current;// creacion de la variable"producto" para poder guardar el producto actual (el nuevo producto)
 
-            var resultado = _productos.GuardarProducto(producto);
+            var resultado = _productos.GuardarProducto(producto); // Instruccion con el producto ya agregado
 
             if (resultado == true)
             {
-                listaProductoBindingSource.ResetBindings(false);
+                listaProductoBindingSource.ResetBindings(false);//intruccion que nos permite poder cambiar los valores de las propiedades pero no asignar mas propiedades solo si esta: (True)
 
             }
             else
             {
-                MessageBox.Show("!Ocurrio un error guardando el producto¡");
+                MessageBox.Show("!Ocurrio un error guardando el producto¡");//mensaje de error en caso de que ocurra
             }
         }
 
-        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)//boton de adicionar producto
         {
-            _productos.AgregarProducto();
+            _productos.AgregarProducto(); //llamamos la funcion 
 
-            listaProductoBindingSource.MoveLast();
+            listaProductoBindingSource.MoveLast();//mueve el producto nuevo a la ultima posicion
         }
     }
 }

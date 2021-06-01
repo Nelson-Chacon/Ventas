@@ -16,7 +16,7 @@ namespace Win.Rentas
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMenu());
+            Application.Run(new FormMenu());//intruccion con la cual se inicia la aplicacion
         }
     }
 }

@@ -14,14 +14,14 @@ namespace Win.Rentas
     public partial class Form1Login : Form
     {
 
-        SeguridadBL _seguridad;
+        SeguridadBL _seguridad;// creamos una variable globar
 
 
         public Form1Login()
         {
             InitializeComponent();
 
-            _seguridad = new SeguridadBL(); 
+            _seguridad = new SeguridadBL();//instanciamos la solucion
        
         }
 
@@ -35,26 +35,26 @@ namespace Win.Rentas
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//boton aceptar
         {
 
          
-            string usuario;
-            string contrasena;
+            string usuario;// Variable creada para evaluar el campo usuario
+            string contrasena;//Variable creada para evaluar el campo contraseña
 
-            usuario = textBox1.Text;
-            contrasena = textBox2.Text;
+            usuario = textBox1.Text; //evaluamos las propiedades texto de la caja de texto 1(usuario) con la nueva variable creada
+            contrasena = textBox2.Text;//evaluamos las propiedades texto de la caja de texto 2(contraseña) con la nueva variable creada
 
-            var resultado = _seguridad.Autorizar(usuario, contrasena);
+            var resultado = _seguridad.Autorizar(usuario, contrasena);//llamamos la funcion para evaluar si el usuario tiene acceso
 
             if (resultado == true)
             {
-                this.Close();
+                this.Close();//de tener acceso el usuario esta instruccion nos permite ingresar el sistema
 
             }
             else
             {
-                MessageBox.Show("¡Usuario o contraseña incorrecta!");
+                MessageBox.Show("¡Usuario o contraseña incorrecta!");// de no tener acceso mostraremos el siguiente mensaje
             }
 
         }
@@ -69,9 +69,9 @@ namespace Win.Rentas
         
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)//Boton cancelar
         {
-            Application.Exit();
+            Application.Exit();//intruccion para cerrar todo el sistema
         }
     }
 }

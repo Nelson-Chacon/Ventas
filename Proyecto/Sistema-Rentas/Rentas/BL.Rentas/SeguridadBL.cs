@@ -9,7 +9,7 @@ namespace BL.Rentas
     public class SeguridadBL
     {
 
-        public bool Autorizar(string usuario, string contrasena)
+        public bool Autorizar(string usuario, string contrasena)//funcion creada para evaluar los usuarios que tienen acceso al sistema
         {
             if(usuario== "admin" && contrasena == "123")
             {

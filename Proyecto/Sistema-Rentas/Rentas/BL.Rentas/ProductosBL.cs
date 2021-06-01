@@ -4,14 +4,15 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BL.Rentas
 {
-    public class ProductosBL
+    public class ProductosBL//clase creada para poder realizar operaciones con los productos
     {
-        public BindingList<Producto> ListaProducto { get; set; }
+        public BindingList<Producto> ListaProducto { get; set; }//prpiedad creada para crear una lista de productos
 
-        public ProductosBL()
+        public ProductosBL()//lista de los productos ya regisrados
         {
             ListaProducto = new BindingList<Producto>();
 
@@ -43,11 +44,13 @@ namespace BL.Rentas
             ListaProducto.Add(producto3);
 
         }
-        public BindingList<Producto> ObtenerProducto()
+
+        public BindingList<Producto> ObtenerProducto()//Mostramos productos
         {
-            return ListaProducto;
+           return ListaProducto;
         }
-        public bool GuardarProducto(Producto producto)
+
+        public bool GuardarProducto(Producto producto)//para guardar producto y asignar una nueva identificacion
         {
             if (producto.Id==0)
             {
@@ -55,16 +58,17 @@ namespace BL.Rentas
             }
             return true;
         }
-        public void AgregarProducto()
+
+        public void AgregarProducto()//private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            var nuevoProducto = new Producto();
-            ListaProducto.Add(nuevoProducto);
+            var nuevoProducto = new Producto();//variable vacia creada para agregar productos desde la ventana de windows
+            ListaProducto.Add(nuevoProducto);// forma de como agregar los produtos
         }
 
         }
     
 
-public class Producto// clase creada para poder manipular base de dato
+public class Producto// clase creada para poder manipular base de dato contiene las propiedades del producto
     {
         public int Id{ get; set; }
         public string Descripcion { get; set; }
