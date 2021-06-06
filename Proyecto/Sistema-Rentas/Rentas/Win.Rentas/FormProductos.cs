@@ -44,14 +44,14 @@ namespace Win.Rentas
 
             var resultado = _productos.GuardarProducto(producto); // Instruccion con el producto ya agregado
 
-            if (resultado == true)
+            if (resultado.Exitoso== true)
             {
                 listaProductoBindingSource.ResetBindings(false);//intruccion que nos permite poder cambiar los valores de las propiedades pero no asignar mas propiedades solo si esta: (True)
                 DeshabilitarHabiliarBotones(true);
             }
             else
             {
-                MessageBox.Show("!Ocurrio un error guardando el producto¡");//mensaje de error en caso de que ocurra
+                MessageBox.Show(resultado.Mensaje);//mensaje de error en caso de que ocurra
             }
         }
 
@@ -61,10 +61,10 @@ namespace Win.Rentas
 
             listaProductoBindingSource.MoveLast();//mueve el producto nuevo a la ultima posicion
 
-            DeshabilitarHabiliarBotones(false);
+            DeshabilitarHabiliarBotones(false);//llama la funcion con el valor de falso
         }
 
-        private void DeshabilitarHabiliarBotones(bool valor)
+        private void DeshabilitarHabiliarBotones(bool valor) //funcion para inicializar el estado de los botones de la barra de navegacion
         {
             bindingNavigatorMoveFirstItem.Enabled = valor;
             bindingNavigatorMoveLastItem.Enabled = valor;
@@ -79,22 +79,31 @@ namespace Win.Rentas
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
+            var resultado = MessageBox.Show("Decea eliminar este registro","Eliminar", MessageBoxButtons.YesNo);//creacion de variable y asignacion de una ventana para verificar la eliminacion y de la misma manera asignacion de titulo y habilitacion de botones Si o NO
+            if (resultado==DialogResult.OK)//Opcion para validar si el usuario ingreso si o no de la ventana anterior
+            {
+
+            }
 
             if (idTextBox.Text != "")
             {
-                var id = Convert.ToInt32(idTextBox.Text);
-                Eliminar(id);
+                if (resultado == DialogResult.Yes)//Opcion para validar si el usuario ingreso si o no de la ventana anterior
+                {
+                    var id = Convert.ToInt32(idTextBox.Text);// convertir 
+                    Eliminar(id);//llama a ala funcion eliminar
+                }
+
             }
         }
 
-        private void Eliminar(int id)
+        private void Eliminar(int id)//opcion para eliminar un producto (funvion)
         { 
            
-            var resultado = _productos.EliminarProducto(id);
+            var resultado = _productos.EliminarProducto(id);//llama la funcion de la libreria productosbl
 
             if (resultado == true)
             {
-                listaProductoBindingSource.ResetBindings(false);
+                listaProductoBindingSource.ResetBindings(false);///opcion para reiniciar la lita de los productos una vez eliminados
             }
             else
             {
@@ -102,9 +111,9 @@ namespace Win.Rentas
             }
         }
 
-        private void toolStripButtonCancelar_Click(object sender, EventArgs e)
+        private void toolStripButtonCancelar_Click(object sender, EventArgs e)//boton de cancelar
         {
-            DeshabilitarHabiliarBotones(true);
+            DeshabilitarHabiliarBotones(true);//llama la funcion para habilitar botones
             Eliminar(0);
         }
     }
