@@ -48,6 +48,7 @@ namespace Win.Rentas
             {
                 listaProductoBindingSource.ResetBindings(false);//intruccion que nos permite poder cambiar los valores de las propiedades pero no asignar mas propiedades solo si esta: (True)
                 DeshabilitarHabiliarBotones(true);
+                MessageBox.Show("El producto a sido guardado exitosamente");//mensaje de confirmacion que el producto se guardo
             }
             else
             {
@@ -77,7 +78,7 @@ namespace Win.Rentas
         
         }
 
-        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)//boton de eliminar
         {
             var resultado = MessageBox.Show("Decea eliminar este registro","Eliminar", MessageBoxButtons.YesNo);//creacion de variable y asignacion de una ventana para verificar la eliminacion y de la misma manera asignacion de titulo y habilitacion de botones Si o NO
             if (resultado==DialogResult.OK)//Opcion para validar si el usuario ingreso si o no de la ventana anterior
@@ -116,5 +117,7 @@ namespace Win.Rentas
             DeshabilitarHabiliarBotones(true);//llama la funcion para habilitar botones
             Eliminar(0);
         }
+
+        
     }
 }

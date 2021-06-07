@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,44 +11,22 @@ namespace BL.Rentas
 {
     public class ProductosBL//clase creada para poder realizar operaciones con los productos
     {
+        Contexto _contexto;//intanciamos una variable local desde la libreria Entity
+
         public BindingList<Producto> ListaProducto { get; set; }//prpiedad creada para crear una lista de productos
 
-        public ProductosBL()//lista de los productos ya regisrados
+        public ProductosBL()//constructor de la clase en la cual instaciamos y cargamos
         {
-            ListaProducto = new BindingList<Producto>();
-
-            var producto1 = new Producto();
-            producto1.Id = 1;
-            producto1.Descripcion = "Iphone X";
-            producto1.Precio = 25000;
-            producto1.Existencia = 15;
-            producto1.Activo = true;
-
-            ListaProducto.Add(producto1);
-
-            var producto2 = new Producto();
-            producto2.Id = 2;
-            producto2.Descripcion = "Samsung Galaxy S9";
-            producto2.Precio = 20000;
-            producto2.Existencia = 8;
-            producto2.Activo = true;
-
-            ListaProducto.Add(producto2);
-
-            var producto3 = new Producto();
-            producto3.Id = 3;
-            producto3.Descripcion = "LG J7";
-            producto3.Precio = 12000;
-            producto3.Existencia = 10;
-            producto3.Activo = true;
-
-            ListaProducto.Add(producto3);
+            _contexto = new Contexto();//instanciamos la varibale
+            ListaProducto = _contexto.Productos.Local.ToBindingList();//transformacion de datos de producto para una lista con una propiedad como ser "local"
 
         }
 
         public BindingList<Producto> ObtenerProducto()//Mostramos productos
         {
-           return ListaProducto;
+
+            _contexto.Productos.Load(); //intruccion para cargar(conexion a la base de datos lo que esta en la base de datos DbSet de la biblioteca contexto 
+            return ListaProducto;
         }
 
         public Resultado GuardarProducto(Producto producto)//para guardar producto y validar con tipo Resultado que es la clase creada
@@ -57,13 +36,8 @@ namespace BL.Rentas
             {
                 return resultado;
             }
+            _contexto.SaveChanges();//para salvar (guardar) producto
 
-
-
-            if (producto.Id==0)
-            {
-                producto.Id = ListaProducto.Max(item => item.Id) + 1;//intruccion para asignar un codigo
-            }
             resultado.Exitoso = true;
             return resultado;
         }
@@ -81,6 +55,7 @@ namespace BL.Rentas
                 if (producto.Id == id)
                 {
                     ListaProducto.Remove(producto);//intruccion para remover el producto eliminado
+                    _contexto.SaveChanges();
                     return true;//en caso de que el producto se encuentre el producto eliminara desde el boton
                 }
             }
@@ -127,6 +102,7 @@ public class Producto// clase creada para poder manipular base de dato contiene 
         public string Descripcion { get; set; }
         public double Precio { get; set; }
         public int Existencia { get; set; }
+        public Byte[] Foto { get; set; }//propiedad creada para agregar fotos
         public bool Activo { get; set; }
     }
 
