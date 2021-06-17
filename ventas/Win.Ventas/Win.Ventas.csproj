@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{09443A86-EF3C-4272-8A40-A53EA6079131}</ProjectGuid>
+    <ProjectGuid>{06208E17-640C-43EA-B67D-90D0282B1939}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ventas</RootNamespace>
-    <AssemblyName>Ventas</AssemblyName>
+    <RootNamespace>Win.Ventas</RootNamespace>
+    <AssemblyName>Win.Ventas</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,16 +46,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormHombres.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormHombres.Designer.cs">
+      <DependentUpon>FormHombres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMenú.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMenú.Designer.cs">
+      <DependentUpon>FormMenú.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMujeres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMujeres.Designer.cs">
+      <DependentUpon>FormMujeres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNiños.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNiños.Designer.cs">
+      <DependentUpon>FormNiños.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormHombres.resx">
+      <DependentUpon>FormHombres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMenú.resx">
+      <DependentUpon>FormMenú.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMujeres.resx">
+      <DependentUpon>FormMujeres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNiños.resx">
+      <DependentUpon>FormNiños.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -65,6 +101,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -78,6 +115,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\seguridad.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

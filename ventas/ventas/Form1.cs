@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ventas
+namespace Ventas
 {
     public partial class Form1 : Form
     {
@@ -17,9 +17,14 @@ namespace ventas
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hola Mundo");
+            MessageBox.Show("Si lo puedes soñar, lo puedes lograr");
         }
     }
 }
