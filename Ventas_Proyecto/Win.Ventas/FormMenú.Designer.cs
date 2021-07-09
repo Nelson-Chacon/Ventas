@@ -47,6 +47,8 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.menuStrip1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("menuStrip1.BackgroundImage")));
+            this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.menuStrip1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
@@ -67,16 +69,20 @@
             // 
             // ventasToolStripMenuItem
             // 
+            this.ventasToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
+            this.ventasToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ventasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clientesToolStripMenuItem,
             this.ventasToolStripMenuItem1,
             this.hombresToolStripMenuItem});
+            this.ventasToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
             this.ventasToolStripMenuItem.Size = new System.Drawing.Size(153, 27);
             this.ventasToolStripMenuItem.Text = "Departamentos";
             // 
             // clientesToolStripMenuItem
             // 
+            this.clientesToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(156, 28);
             this.clientesToolStripMenuItem.Text = "Mujeres";
@@ -84,6 +90,7 @@
             // 
             // ventasToolStripMenuItem1
             // 
+            this.ventasToolStripMenuItem1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ventasToolStripMenuItem1.Name = "ventasToolStripMenuItem1";
             this.ventasToolStripMenuItem1.Size = new System.Drawing.Size(156, 28);
             this.ventasToolStripMenuItem1.Text = "Niños";
